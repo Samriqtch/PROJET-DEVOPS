@@ -17,12 +17,15 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '18'
-      - name: Installer les dépendances
-        run: npm install
+      - name: Installer ESLint
+        run: npm install eslint --save-dev
+      - name: Créer config ESLint
+        run: |
+          echo '{"env":{"browser":true,"es2021":true},"rules":{"no-unused-vars":"warn"}}' > .eslintrc.json
       - name: Lancer le linting
-        run: npx eslint src/script.js --no-eslintrc -c '{"rules":{"no-unused-vars":"warn","no-undef":"warn"}}'
+        run: npx eslint src/script.js
 
-  #  JOB 2 — Tests automatiques
+  # JOB 2 — Tests automatiques
   test:
     name: Tests automatiques
     runs-on: ubuntu-latest
@@ -37,14 +40,14 @@ jobs:
           node -e "
             $(cat src/script.js)
             let ok = true;
-            if (addition(2,3) !== 5)     { console.error('FAIL addition(2,3)');     ok=false; }
+            if (addition(2,3) !== 5)      { console.error('FAIL addition(2,3)');     ok=false; }
             if (soustraction(5,2) !== 3)  { console.error('FAIL soustraction(5,2)'); ok=false; }
             if (addition(-1,1) !== 0)     { console.error('FAIL addition(-1,1)');    ok=false; }
             if (ok) console.log('Tous les tests passent !');
             else process.exit(1);
           "
 
-  #  JOB 3 — Build (validation structure)
+  # JOB 3 — Build (validation structure)
   build:
     name: Validation du build
     runs-on: ubuntu-latest
@@ -61,7 +64,7 @@ jobs:
           ls css/
           echo "Build validé !"
 
-  #  JOB 4 — Déploiement (GitHub Pages)
+  # JOB 4 — Déploiement (GitHub Pages)
   deploy:
     name: Déploiement GitHub Pages
     runs-on: ubuntu-latest
