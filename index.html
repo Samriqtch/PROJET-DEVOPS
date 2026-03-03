@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calculatrice Web</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <main class="calculator-page">
+    <section class="calculator">
+      <h1 class="calculator__title">Calculatrice</h1>
+      <input
+        type="text"
+        id="display"
+        class="calculator__display"
+        placeholder="0"
+        readonly
+      />
+      <div class="calculator__keys">
+        <button data-action="clear" class="key key--secondary">C</button>
+        <button data-action="sign" class="key key--secondary">+/-</button>
+        <button data-action="percent" class="key key--secondary">%</button>
+        <button data-action="divide" class="key key--operator">÷</button>
+
+        <button class="key">7</button>
+        <button class="key">8</button>
+        <button class="key">9</button>
+        <button data-action="multiply" class="key key--operator">×</button>
+
+        <button class="key">4</button>
+        <button class="key">5</button>
+        <button class="key">6</button>
+        <button data-action="subtract" class="key key--operator">−</button>
+
+        <button class="key">1</button>
+        <button class="key">2</button>
+        <button class="key">3</button>
+        <button data-action="add" class="key key--operator">+</button>
+
+        <button class="key key--zero">0</button>
+        <button class="key">,</button>
+        <button data-action="calculate" class="key key--primary">=</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="src/script.js"></script>
+</body>
+</html>

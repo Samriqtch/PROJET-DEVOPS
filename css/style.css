@@ -1,0 +1,132 @@
+:root {
+  --bg: #0f172a;
+  --bg-elevated: #020617;
+  --accent: #22c55e;
+  --accent-soft: rgba(34, 197, 94, 0.15);
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+  --danger: #f97373;
+  --border: rgba(148, 163, 184, 0.3);
+  --radius-lg: 1.25rem;
+  --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.6);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top, #1e293b 0, #020617 45%, #000 100%);
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.calculator-page {
+  width: 100%;
+  max-width: 420px;
+}
+
+.calculator {
+  background: linear-gradient(145deg, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.98));
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  padding: 24px 24px 18px;
+  border: 1px solid var(--border);
+  backdrop-filter: blur(18px);
+}
+
+.calculator__title {
+  margin: 0 0 16px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.calculator__display {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: radial-gradient(circle at top left, rgba(34, 197, 94, 0.16), rgba(15, 23, 42, 0.9));
+  color: #f9fafb;
+  font-size: 2.4rem;
+  font-weight: 500;
+  text-align: right;
+  padding: 18px 14px;
+  border-radius: 18px;
+  margin-bottom: 18px;
+  box-shadow: inset 0 0 0 1px rgba(148, 163, 184, 0.3);
+}
+
+.calculator__keys {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.key {
+  border: none;
+  outline: none;
+  border-radius: 999px;
+  padding: 14px 0;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--text);
+  background: rgba(15, 23, 42, 0.9);
+  box-shadow: 0 10px 22px rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(30, 64, 175, 0.4);
+  cursor: pointer;
+  transition: transform 0.08s ease, box-shadow 0.08s ease, background 0.12s ease,
+    border-color 0.12s ease;
+}
+
+.key:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.9);
+}
+
+.key:active {
+  transform: translateY(1px) scale(0.98);
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.75);
+}
+
+.key--operator {
+  background: radial-gradient(circle at top, var(--accent-soft), rgba(15, 23, 42, 0.96));
+  color: var(--accent);
+  border-color: rgba(34, 197, 94, 0.6);
+}
+
+.key--primary {
+  background: linear-gradient(135deg, var(--accent), #16a34a);
+  color: #020617;
+  border-color: transparent;
+}
+
+.key--primary:hover {
+  box-shadow: 0 14px 34px rgba(34, 197, 94, 0.4);
+}
+
+.key--secondary {
+  color: var(--muted);
+}
+
+.key--zero {
+  grid-column: span 2;
+}
+
+@media (max-width: 480px) {
+  .calculator {
+    padding: 18px 16px 14px;
+  }
+
+  .calculator__display {
+    font-size: 2rem;
+  }
+}
